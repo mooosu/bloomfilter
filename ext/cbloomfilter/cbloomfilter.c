@@ -11,6 +11,10 @@
 # define RSTRING_PTR(x) (RSTRING(x)->ptr)
 #endif
 
+#if !defined(STR2CSTR)
+# define STR2CSTR(x) StringValueCStr(x)
+#endif
+
 static VALUE cBloomFilter;
 
 struct BloomFilter {

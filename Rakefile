@@ -1,6 +1,5 @@
 require 'rake'
-require 'spec'
-require 'spec/rake/spectask'
+require "rspec/core/rake_task"
 require 'rake/extensiontask'
 
 begin
@@ -25,11 +24,7 @@ rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
 end
 
-Spec::Rake::SpecTask.new do |t|
-  t.spec_opts ||= []
-  t.spec_opts << "-rubygems"
-  t.spec_opts << "--options" << "spec/spec.opts"
-  t.spec_files = FileList['spec/*_spec.rb']
-end
+desc "Run all specs in spec directory (excluding plugin specs)"
+RSpec::Core::RakeTask.new(:spec) 
 
 Rake::ExtensionTask.new('cbloomfilter')

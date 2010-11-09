@@ -14,22 +14,22 @@ class RedisBloom
     ttl = @opts[:ttl] if ttl.nil?
 
     indexes_for(key).each do |idx|
-      @db.incr(idx, 1)
+      @db.incr(idx)
       @db.expire(idx, ttl) if ttl
     end
   end
 
   def delete(key)
     indexes_for(key).each do |idx|
-      if @db.decr(idx, 1) <= 0
-        @db.delete(idx) 
+      if @db.decr(idx) <= 0
+        @db.del(idx) 
       end
     end
   end
 
   def include?(*keys)
-    indexes = keys.collect { |key| indexes_for(key) }
-    not @db.mget(indexes.flatten).include? nil
+    indexes = keys.inject([]){ |is, key| is+=(indexes_for(key)) }
+    not @db.mget(*indexes).include? nil
   end
 
   def num_set
@@ -52,3 +52,4 @@ class RedisBloom
     indexes
   end
 end
+# vim:ts=2:sw=2:
