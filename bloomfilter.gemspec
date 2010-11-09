@@ -4,12 +4,12 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{bloomfilter}
-  s.version = "1.3.1"
+  s.name = %q{mooosu_bloomfilter}
+  s.version = "1.3.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Ilya Grigorik", "Tatsuya Mori"]
-  s.date = %q{2010-08-25}
+  s.authors = ["Ilya Grigorik", "Tatsuya Mori","mooosu"]
+  s.date = %q{2010-11-09}
   s.description = %q{Counting Bloom Filter implemented in Ruby}
   s.email = %q{ilya@igvita.com}
   s.extensions = ["ext/cbloomfilter/extconf.rb"]
@@ -34,7 +34,6 @@ Gem::Specification.new do |s|
      "spec/c_spec.rb",
      "spec/helper.rb",
      "spec/redis_spec.rb",
-     "spec/spec.opts"
   ]
   s.homepage = %q{http://github.com/igrigorik/bloomfilter}
   s.rdoc_options = ["--charset=UTF-8"]
